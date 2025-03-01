@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Promoções</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Produto</th>
+            <th>Desconto (%)</th>
+            <th>Dias Antes do Vencimento</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for promocao in promocoes %}
+        <tr>
+            <td>{{ promocao.produto.nome }}</td>
+            <td>{{ promocao.porcentagem_desconto }}</td>
+            <td>{{ promocao.dias_antes_vencimento }}</td>
+            <td>
+                <a href="{% url 'editar_promocao' promocao.id %}">Editar</a>
+                <a href="{% url 'excluir_promocao' promocao.id %}">Desativar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{% url 'adicionar_promocao' %}">Adicionar Promoção</a>
+{% endblock %}

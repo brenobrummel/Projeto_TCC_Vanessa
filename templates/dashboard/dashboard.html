@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Dashboard</h2>
+<div>
+    <h3>Produtos Próximos ao Vencimento</h3>
+    <ul>
+        {% for produto in produtos_proximos_vencimento %}
+        <li>{{ produto.nome }} - {{ produto.validade }}</li>
+        {% endfor %}
+    </ul>
+</div>
+<div>
+    <h3>Resumo</h3>
+    <p>Total em Estoque: {{ total_estoque }}</p>
+    <p>Total de Doações: {{ total_doacoes }}</p>
+</div>
+{% endblock %}
